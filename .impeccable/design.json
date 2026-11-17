@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T00:00:00Z",
+  "title": "Design System: Iván Jorquera",
+  "extensions": {
+    "colorMeta": {
+      "stage": { "role": "neutral", "displayName": "Stage Black", "canonical": "#000000", "tonalRamp": ["#000000", "#0b0b0b", "#1a1a1a", "#2a2a2a", "#4d4d4d", "#7d7d7d", "#bdbdbd", "#fafafa"] },
+      "light": { "role": "primary", "displayName": "Stage Light", "canonical": "#ffffff", "tonalRamp": ["rgba(255,255,255,0.07)", "rgba(255,255,255,0.14)", "rgba(255,255,255,0.2)", "rgba(255,255,255,0.22)", "rgba(255,255,255,0.45)", "rgba(255,255,255,0.55)", "rgba(255,255,255,0.8)", "#ffffff"] },
+      "ink": { "role": "primary", "displayName": "Lit Ink", "canonical": "#fafafa", "tonalRamp": ["#262626", "#3d3d3d", "#575757", "#7d7d7d", "#a5a5a5", "#cfcfcf", "#ebebeb", "#fafafa"] },
+      "ink-dim": { "role": "neutral", "displayName": "Dim Ink", "canonical": "rgba(250, 250, 250, 0.66)" },
+      "ink-whisper": { "role": "neutral", "displayName": "Whisper Ink", "canonical": "rgba(250, 250, 250, 0.5)" },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(250, 250, 250, 0.12)" },
+      "rule-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgba(250, 250, 250, 0.2)" },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f3f3f1", "tonalRamp": ["#1c1c1b", "#363635", "#4d4d4b", "#71716f", "#9a9a97", "#c4c4c1", "#e3e3e0", "#f3f3f1"] },
+      "paper-ink": { "role": "neutral", "displayName": "Paper Ink", "canonical": "#0a0a0a" },
+      "paper-ink-dim": { "role": "neutral", "displayName": "Paper Dim", "canonical": "#4d4d4b" },
+      "paper-rule": { "role": "neutral", "displayName": "Paper Rule", "canonical": "rgba(10, 10, 10, 0.14)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero and finale headlines; two voices, balanced wrap." },
+      "headline": { "displayName": "Headline", "purpose": "Act openers; lit clause plus dim clause." },
+      "statement": { "displayName": "Statement", "purpose": "Pinned scroll statement whose words light up with scroll." },
+      "title": { "displayName": "Title", "purpose": "Project scene names; tenets use a smaller step (clamp 28-48px)." },
+      "quote": { "displayName": "Quote", "purpose": "The single light-weight blockquote on paper." },
+      "lead": { "displayName": "Lead", "purpose": "Hero and finale lead lines in Dim Ink." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs in Dim Ink, 44-70ch; 16px below 560px." },
+      "label": { "displayName": "Label", "purpose": "Spec labels, captions, footer in Whisper Ink." },
+      "data": { "displayName": "Data", "purpose": "Mono for real data only: agent log, timestamps, years, phone, email." }
+    },
+    "shadows": [
+      { "name": "button-glow", "value": "0 10px 40px -12px rgba(255,255,255,0.45)", "purpose": "White light pooling under the primary pill." },
+      { "name": "button-glow-hover", "value": "0 16px 50px -12px rgba(255,255,255,0.6)", "purpose": "Primary pill on hover." },
+      { "name": "screen-light", "value": "0 50px 120px -30px rgba(255,255,255,calc(var(--lit) * 0.22)), 0 30px 60px -20px rgba(0,0,0,0.9)", "purpose": "Screenshot glass lit from above and seated on the stage." },
+      { "name": "panel-light", "value": "0 50px 120px -40px rgba(255,255,255,calc(var(--lit) * 0.18))", "purpose": "Agent panel under the light." },
+      { "name": "node-flare", "value": "0 0 30px -6px rgba(255,255,255,0.5)", "purpose": "Active flow node." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default easing for entrances, lifts and hover transforms." },
+      { "name": "power-on", "value": "1.6s ease-out; opacity 0 > 0.55 > 0.2 > 1", "purpose": "Spotlight flickers on at load." },
+      { "name": "word-rise", "value": "0.9s ease-out, 0.05s stagger, from translateY(0.3em) blur(6px)", "purpose": "Hero headline words rising into focus." },
+      { "name": "follow-spot", "value": "--lit 0..1 by distance to viewport center, smoothstep", "purpose": "Dims, desaturates and tilts stage media until it crosses center." },
+      { "name": "press", "value": "scale(0.98), 80ms", "purpose": "Button press feedback." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "560px" },
+      { "name": "nav", "value": "640px" },
+      { "name": "md", "value": "860px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "White pill with a light glow; the single primary action (Escribirme).",
+      "html": "<a class=\"ds-btn\" href=\"#\">Escribirme</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; font: 500 17px/1 'Host Grotesk', 'Segoe UI', system-ui, sans-serif; letter-spacing: -0.005em; padding: 16px 28px; border-radius: 999px; background: #fafafa; color: #000; text-decoration: none; box-shadow: 0 10px 40px -12px rgba(255,255,255,0.45); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s cubic-bezier(0.16,1,0.3,1), background 0.2s ease; } .ds-btn:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 16px 50px -12px rgba(255,255,255,0.6); } .ds-btn:active { transform: scale(0.98); transition-duration: 0.08s; } .ds-btn:focus-visible { outline: 2px solid #fafafa; outline-offset: 4px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "link-text",
+      "description": "Secondary action: ink text with a line arrow that drops on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\"><span>Ver proyectos</span><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14M6 13l6 6 6-6\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 8px; font: 500 17px 'Host Grotesk', system-ui, sans-serif; color: #fafafa; text-decoration: none; padding: 10px 2px; } .ds-link svg { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-link:hover svg { transform: translateY(3px); } .ds-link:hover span { text-decoration: underline; text-underline-offset: 0.22em; text-decoration-thickness: 1px; } .ds-link:focus-visible { outline: 2px solid #fafafa; outline-offset: 4px; border-radius: 6px; }"
+    },
+    {
+      "name": "Copy Chip",
+      "kind": "chip",
+      "refersTo": "chip-copy",
+      "description": "Outline pill that copies the email and confirms with a check.",
+      "html": "<button class=\"ds-copy\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"11\" rx=\"2\"/><path d=\"M5 15V5a1 1 0 0 1 1-1h9\"/></svg>Copiar</button>",
+      "css": ".ds-copy { font: 500 14px/1 'Host Grotesk', system-ui, sans-serif; color: rgba(250,250,250,0.66); background: none; border: 1px solid rgba(250,250,250,0.2); border-radius: 999px; padding: 6px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s ease, color 0.2s ease; } .ds-copy:hover { border-color: #fafafa; color: #fafafa; } .ds-copy:focus-visible { outline: 2px solid #fafafa; outline-offset: 4px; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Fixed solid black bar with hairline edge, dim links and a small ink pill CTA.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-brand\" href=\"#\">Iván Jorquera</a><nav><a href=\"#\" aria-current=\"true\">Proyectos</a><a href=\"#\">Método</a><a href=\"#\">Formación</a><a class=\"ds-pill\" href=\"#\">Escribirme</a></nav></header>",
+      "css": ".ds-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 56px; padding: 0 24px; background: #000; border-bottom: 1px solid rgba(250,250,250,0.12); font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-brand { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: #fafafa; text-decoration: none; } .ds-bar nav { display: flex; align-items: center; gap: 24px; font-size: 14px; } .ds-bar nav a { color: rgba(250,250,250,0.66); text-decoration: none; transition: color 0.2s ease; } .ds-bar nav a:hover, .ds-bar nav a[aria-current=\"true\"] { color: #fafafa; } .ds-bar nav .ds-pill { color: #000; background: #fafafa; padding: 7px 14px; border-radius: 999px; font-weight: 500; } .ds-bar nav .ds-pill:hover { background: #fff; color: #000; } .ds-bar a:focus-visible { outline: 2px solid #fafafa; outline-offset: 4px; border-radius: 6px; }"
+    },
+    {
+      "name": "Project Scene",
+      "kind": "card",
+      "description": "A project as a scene under its own light: title, dim description, hairline spec list. Not a card.",
+      "html": "<article class=\"ds-scene\"><div class=\"ds-scene-text\"><h3>Bastón inteligente de asistencia.</h3><p>Un bastón con <strong>sensores ultrasónicos</strong> y un microcontrolador ESP32.</p></div><dl class=\"ds-spec\"><div><dt>Estado</dt><dd>Proyecto en equipo</dd></div><div><dt>Construido con</dt><dd>ESP32</dd></div><div><dt>Fabricación</dt><dd>Impresión 3D</dd></div></dl></article>",
+      "css": ".ds-scene { position: relative; padding: 64px 24px 24px; background: radial-gradient(46% 38% at 50% 0%, rgba(255,255,255,0.2), rgba(255,255,255,0) 72%), #000; color: #fafafa; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-scene-text { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px 48px; align-items: end; } .ds-scene h3 { margin: 0; font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -0.035em; } .ds-scene p { margin: 0; font-size: 17px; line-height: 1.55; color: rgba(250,250,250,0.66); } .ds-scene strong { color: #fafafa; font-weight: 500; } .ds-spec { margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(250,250,250,0.12); } .ds-spec div { padding: 18px 24px 0 0; } .ds-spec dt { font-size: 13px; color: rgba(250,250,250,0.5); margin: 0 0 6px; } .ds-spec dd { margin: 0; font-size: 15px; line-height: 1.45; }"
+    },
+    {
+      "name": "Agent Flow Panel",
+      "kind": "custom",
+      "refersTo": "agent-panel",
+      "description": "Live monochrome panel: mono header with glowing status, flow nodes with an inverted core, mono log.",
+      "html": "<div class=\"ds-agent\"><div class=\"ds-agent-top\"><span>robot.py</span><span class=\"ds-state\">próxima revisión en 10 s</span></div><div class=\"ds-flow\"><div class=\"ds-node ds-on\"><b>ERP Softland</b><span>Notas de venta</span></div><div class=\"ds-wire\"></div><div class=\"ds-node ds-core\"><b>Agente en Python</b><span>robot.py</span></div><div class=\"ds-wire\"></div><div class=\"ds-node ds-next\"><b>Backend</b><span>Próxima fase</span></div></div><ol class=\"ds-log\"><li><time>10:42:07</time>Nota DEMO-1041 enviada a la impresora</li></ol></div>",
+      "css": ".ds-agent { border: 1px solid rgba(250,250,250,0.2); border-radius: 16px; overflow: hidden; background: linear-gradient(180deg, #0d0d0d, #050505); box-shadow: 0 50px 120px -40px rgba(255,255,255,0.18); color: #fafafa; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-agent-top { display: flex; justify-content: space-between; gap: 16px; padding: 14px 20px; border-bottom: 1px solid rgba(250,250,250,0.12); font: 13px 'JetBrains Mono', ui-monospace, monospace; color: rgba(250,250,250,0.66); } .ds-state { display: inline-flex; align-items: center; gap: 8px; } .ds-state::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fafafa; box-shadow: 0 0 10px rgba(255,255,255,0.8); } .ds-flow { display: grid; grid-template-columns: 1fr auto 1.1fr auto 1fr; align-items: center; padding: 32px 24px 8px; } .ds-node { border: 1px solid rgba(250,250,250,0.2); border-radius: 12px; padding: 14px 16px; text-align: center; transition: border-color 0.4s ease, box-shadow 0.4s ease; } .ds-node b { display: block; font-weight: 500; font-size: 15px; } .ds-node span { display: block; font-size: 13px; color: rgba(250,250,250,0.5); margin-top: 2px; } .ds-core { background: #fafafa; color: #000; border-color: #fafafa; } .ds-core span { color: rgba(0,0,0,0.6); } .ds-on, .ds-node:hover { border-color: #fafafa; box-shadow: 0 0 30px -6px rgba(255,255,255,0.5); } .ds-next { border-style: dashed; color: rgba(250,250,250,0.66); } .ds-wire { width: 40px; height: 1px; background: rgba(250,250,250,0.2); } .ds-log { list-style: none; margin: 0; padding: 18px 24px 24px; font: 13px/1.75 'JetBrains Mono', ui-monospace, monospace; color: #fafafa; } .ds-log time { color: rgba(250,250,250,0.5); margin-right: 12px; }"
+    },
+    {
+      "name": "Paper Tenet",
+      "kind": "custom",
+      "refersTo": "paper-act",
+      "description": "The single inverted act: black ink on paper, tenets between paper hairlines.",
+      "html": "<section class=\"ds-paper\"><h2>Cómo trabajo. <span>Con una persona al mando.</span></h2><ul><li><h3>Rápido.</h3><p>Construyo con IA para llegar pronto a algo que funciona.</p></li></ul></section>",
+      "css": ".ds-paper { background: #f3f3f1; color: #0a0a0a; padding: 48px 24px; font-family: 'Host Grotesk', system-ui, sans-serif; } .ds-paper h2 { margin: 0; font-weight: 600; font-size: 44px; line-height: 1; letter-spacing: -0.04em; } .ds-paper h2 span { color: #4d4d4b; } .ds-paper ul { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid rgba(10,10,10,0.14); } .ds-paper li { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 48px; padding: 28px 0; border-bottom: 1px solid rgba(10,10,10,0.14); align-items: baseline; } .ds-paper h3 { margin: 0; font-weight: 600; font-size: 32px; line-height: 1.05; letter-spacing: -0.03em; } .ds-paper p { margin: 0; font-size: 17px; line-height: 1.55; color: #4d4d4b; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Keynote Stage",
+    "overview": "The page is a dark stage, and the work only becomes fully visible when the light finds it. White light is the only color. A soft follow-spot (a blurred cone, a pool where it lands, and a hot source above the frame) is the system's aura. Everything else is black, white, and the grays that light makes as it falls off. Real software (the Kine screenshots, the Softland agent panel) sits under the light. Projects without imagery stand on the stage as type and specs, with no decorative stand-ins.\n\nThe system is quiet and formal. Display type is very large, tight and set in two voices: a lit clause and a dim clause. Body text is small, gray-white and set to measure. Hairline rules at 12% white do the structural work that boxes and cards would do elsewhere. One act per page flips to white paper with black ink for formal contrast, and the stage darkens back over it as you leave.\n\nThe build follows the direction contract with one difference: the first viewport's name is not its own small line above the headline. It is set inside the lead in full ink (\"Soy **Iván Jorquera**…\"). The build is the authority here.",
+    "keyCharacteristics": [
+      "Pure black stage, white light as the only color, no hue anywhere.",
+      "Follow-spot light: media and scenes go from dim and desaturated to lit as they cross the center of the viewport.",
+      "Two-voice display headlines: a lit clause, then a dim clause.",
+      "Hairline rules instead of cards; projects are scenes, not tiles.",
+      "Exactly one inverted paper act.",
+      "Mono is reserved for real data: logs, timestamps, dates, phone numbers, file names."
+    ],
+    "rules": [
+      { "name": "The Single Light Rule", "body": "No hue, anywhere. Any asset that carries color is replaced or left out. The teal and violet Softland diagram was replaced by a live monochrome panel for this reason.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Display and section headlines put their second clause in Whisper Ink on stage, or Paper Dim on paper. The lit clause states and the dim clause qualifies.", "section": "colors" },
+      { "name": "The Mono-Is-Data Rule", "body": "Mono appears only where the content is machine or record data. It is never a decorative label voice.", "section": "typography" },
+      { "name": "The Tabular Figures Rule", "body": "Real figures (years, counts, intervals, phone numbers) are set in tabular numerals so they hold position like an instrument readout.", "section": "typography" },
+      { "name": "The Light-Not-Shadow Rule", "body": "Elevation is a white glow from the light above, scaled by how lit the object is. Never use hard or offset shadows.", "section": "elevation" },
+      { "name": "The Follow-Spot Rule", "body": "Stage objects carry a `--lit` value from 0 to 1, driven by their distance from the center of the viewport. At low light they dim (brightness down to 30%), desaturate, tilt back up to 14° and shrink slightly. When lit they are full color, flat and glowing. With reduced motion, everything stays fully lit and untransformed.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the stage pure black (#000000) and let the follow-spot be the only atmosphere.",
+      "Do split display and section headlines into a lit clause and a dim clause.",
+      "Do put real software under the light: screenshots and live, honest panels, each labeled when its data is example data.",
+      "Do separate content with full-width hairlines at 12% white, and border stage objects at 20%.",
+      "Do use mono only for data, and tabular numerals for every real figure.",
+      "Do keep every lit element fully lit and static when reduced motion is requested."
+    ],
+    "donts": [
+      "Don't introduce any hue: no accent color, no colored diagrams, no tinted grays.",
+      "Don't box projects in cards or a tile grid. A project is a scene under its own light, with a hairline spec list.",
+      "Don't use hard or offset shadows. Depth is white light from above.",
+      "Don't use more than one inverted paper act per page.",
+      "Don't copy Apple: no Apple logos, Apple system fonts, device mockups, window traffic lights or borrowed keynote catchphrases.",
+      "Don't invent stand-in imagery for projects that have none. Set them as typographic scenes."
+    ]
+  }
+}
